@@ -1,0 +1,189 @@
+[
+  {
+    "id": "1",
+    "username": "elina-mikelsone",
+    "name": "Elīna Miķelsone",
+    "role": "Head of RTU Design Factory",
+    "superpower": "Coopetition visionary and creator of 'Idea Circus' and 'Idea Poker'.",
+    "skills": [
+      "Idea Management",
+      "Innovation Generation",
+      "Mentorship",
+      "Strategy"
+    ],
+    "certifications": [
+      "Master Innovator",
+      "WOIC Best Practice Winner 2025"
+    ],
+    "email": "elina.mikelsone@rtu.lv",
+    "linkedin": "https://linkedin.com/in/elina-mikelsone",
+    "calendly": "https://calendly.com/elina-mikelsone",
+    "currentProject": "Preparing for International Design Factory Week (IDFW '26)",
+    "isAvailable": true,
+    "avatarUrl": "/avatars/elina.png",
+    "password": "designfactory2026",
+    "theme": "custom",
+    "layout": "horizontal",
+    "views": 48,
+    "viewsHistory": [
+      {
+        "date": "2026-06-09",
+        "count": 13
+      }
+    ],
+    "customColor1": "#cc0000",
+    "customColor2": "#0e0335",
+    "officeDay": "Monday",
+    "officeStartTime": "14:29",
+    "officeEndTime": "16:28",
+    "schedule": [
+      {
+        "id": "1781001383457",
+        "days": [
+          "Tue",
+          "Mon",
+          "Wed",
+          "Thu",
+          "Fri"
+        ],
+        "startTime": "09:00",
+        "endTime": "17:00"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "username": "liene-briede",
+    "name": "Liene Briede",
+    "role": "Vice-Rector for Innovations at RTU",
+    "superpower": "Fostering deep tech talent and building Baltic innovation ecosystems.",
+    "skills": [
+      "Ecosystem Building",
+      "Deep Tech",
+      "Strategic Partnerships",
+      "Leadership"
+    ],
+    "certifications": [
+      "EIC Ambassador"
+    ],
+    "email": "liene.briede@rtu.lv",
+    "linkedin": "https://linkedin.com/in/lienebriede",
+    "calendly": "https://calendly.com/liene-briede",
+    "currentProject": "Strengthening university-industry cooperation across Europe",
+    "isAvailable": false,
+    "avatarUrl": "/avatars/liene.png",
+    "password": "designfactory2026",
+    "theme": "default",
+    "layout": "vertical",
+    "views": 20,
+    "viewsHistory": [
+      {
+        "date": "2026-06-09",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "username": "katrina-keke",
+    "name": "Katrīna Ķeķe",
+    "role": "Communications & Project Management",
+    "superpower": "Mastermind of cultural initiatives and communication strategies.",
+    "skills": [
+      "Public Relations",
+      "Event Organization",
+      "Cultural Management",
+      "Networking"
+    ],
+    "certifications": [
+      "LaKA Board Member"
+    ],
+    "email": "katrina.keke@rtu.lv",
+    "linkedin": "https://linkedin.com/in/katrinakeke",
+    "calendly": "https://calendly.com/katrina-keke",
+    "currentProject": "Coordinating 'radi! akadēmiju' initiatives",
+    "isAvailable": true,
+    "avatarUrl": "/avatars/katrina.png",
+    "password": "designfactory2026",
+    "theme": "default",
+    "layout": "vertical",
+    "views": 3
+  },
+  {
+    "id": "4",
+    "username": "kristine-kramena",
+    "name": "Kristīne Kramēna",
+    "role": "EIT Food Representative at RTU",
+    "superpower": "Connecting Latvian food innovators with the European Institute of Innovation.",
+    "skills": [
+      "Project Coordination",
+      "European Grants",
+      "Food Innovation",
+      "Community Building"
+    ],
+    "certifications": [
+      "EIT Food Expert"
+    ],
+    "email": "kristine.kramena@rtu.lv",
+    "linkedin": "https://linkedin.com/in/kristinekramena",
+    "calendly": "https://calendly.com/kristine-kramena",
+    "currentProject": "Expanding the EIT Food community in Latvia (2026-2028)",
+    "isAvailable": true,
+    "avatarUrl": "/avatars/kristine.png",
+    "password": "designfactory2026",
+    "theme": "default",
+    "layout": "vertical",
+    "views": 4,
+    "viewsHistory": [
+      {
+        "date": "2026-06-09",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "username": "daniela-hrapane",
+    "name": "Daniela Hrapāne",
+    "role": "Media & Photography Specialist",
+    "superpower": "Capturing the essence of innovation through a camera lens.",
+    "skills": [
+      "Photography",
+      "Media Production",
+      "Visual Storytelling",
+      "Event Coverage"
+    ],
+    "certifications": [
+      "Pro Photographer"
+    ],
+    "email": "daniela.hrapane@rtu.lv",
+    "linkedin": "https://linkedin.com/in/danielahrapane",
+    "calendly": "https://calendly.com/daniela-hrapane",
+    "currentProject": "Documenting 'BioPhoT Radars' and RTU Science Centre events",
+    "isAvailable": true,
+    "avatarUrl": "/avatars/daniela.png",
+    "password": "designfactory2026",
+    "theme": "default",
+    "layout": "vertical",
+    "views": 3
+  },
+  {
+    "username": "shivang.dash@rtu.lv",
+    "name": "Shivang Dash",
+    "password": "Shiv000$",
+    "role": "New Employee",
+    "superpower": "Add a superpower",
+    "skills": [],
+    "certifications": [],
+    "email": "shivang.dash@rtu.lv@rtu.lv",
+    "linkedin": "",
+    "calendly": "",
+    "currentProject": "",
+    "isAvailable": true,
+    "avatarUrl": "/avatars/elina.png",
+    "theme": "default",
+    "layout": "vertical",
+    "views": 0,
+    "id": "1781002654272"
+  }
+]
