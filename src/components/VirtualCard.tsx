@@ -34,7 +34,7 @@ export default function VirtualCard({ user }: VirtualCardProps) {
   const { language, setLanguage, t } = useLanguage();
 
   // Use a stable URL to prevent React hydration errors
-  const profileUrl = `https://df.rtu.lv/${user.username}`;
+  const profileUrl = `https://df-id.vercel.app/${user.username}`;
 
   const themeClass = user.theme && styles[`theme-${user.theme}`] ? styles[`theme-${user.theme}`] : styles['theme-default'];
   const layoutClass = user.layout === 'horizontal' ? styles['layout-horizontal'] : '';
