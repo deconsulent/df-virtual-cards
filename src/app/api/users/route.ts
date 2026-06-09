@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/utils/supabase';
 import { UserProfile, ScheduleEntry } from '@/data/mockData';
+import bcrypt from 'bcryptjs';
+
 
 // Helper to format DB row to UserProfile
 async function formatUserRow(row: any): Promise<UserProfile> {
@@ -140,22 +142,53 @@ export async function PUT(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const newUser: Partial<UserProfile> = await request.json();
+    const newUser: Partial<UserProfile> & { password?: string } = await request.json();
     
     if (!newUser.username || !newUser.name || !newUser.email || !newUser.password) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Insert user (password hashing is usually done via Postgres extension or edge function, 
-    // but since we are using pgcrypto and Anon key, we need a secure way to insert. 
-    // For simplicity with pgcrypto, we will use a raw RPC or insert raw hash if possible.
-    // Wait, Supabase js insert doesn't support SQL functions like `crypt(...)` directly in the payload.
-    // Let's use RPC if possible. We didn't define an RPC for user creation. 
-    // I will write an RPC or just let it fail if we don't handle the password right now.
-    // Actually, I can just create an RPC function for creating a user. 
-    return NextResponse.json({ error: 'Please use Supabase Dashboard or an RPC to create users for now.' }, { status: 501 });
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    const passwordHash = bcrypt.hashSync(newUser.password, 10);
+    const userId = crypto.randomUUID();
+
+    const { data, error } = await supabase
+      .from('users')
+      .insert({
+        id: userId,
+        username: newUser.username,
+        name: newUser.name,
+        email: newUser.email,
+        password_hash: passwordHash,
+        role: newUser.role || 'New Employee',
+        superpower: newUser.superpower || '',
+        current_project: newUser.currentProject || '',
+        avatar_url: newUser.avatarUrl || '/avatars/elina.png',
+        linkedin: newUser.linkedin || '',
+        calendly: newUser.calendly || '',
+        is_available: newUser.isAvailable ?? true,
+        theme: newUser.theme || 'default',
+        layout: newUser.layout || 'vertical',
+        custom_color_1: newUser.customColor1 || '',
+        custom_color_2: newUser.customColor2 || '',
+        office_hours: newUser.officeHours || '',
+        office_day: newUser.officeDay || '',
+        office_start: newUser.officeStartTime || null,
+        office_end: newUser.officeEndTime || null,
+        views: 0
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error("POST Error inserting user:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    const formatted = await formatUserRow(data);
+    return NextResponse.json({ message: 'User created successfully', user: formatted }, { status: 201 });
+  } catch (error: any) {
+    console.error("POST Error:", error);
+    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }
 

@@ -40,5 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# backups
-*.tar.gz
+# backups and metadata
+v0-backup.tar.gz
+._*
+**/._*
+.DS_Store
+

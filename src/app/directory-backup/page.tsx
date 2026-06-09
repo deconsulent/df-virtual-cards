@@ -1,23 +1,65 @@
 import React from 'react';
 import Link from 'next/link';
-import fs from 'fs';
-import path from 'path';
+import { supabase } from '@/utils/supabase';
 import { UserProfile } from '@/data/mockData';
 import Directory from '@/components/Directory';
 
-// Helper to read data.json on the server side
-function getUsers(): UserProfile[] {
-  try {
-    const dataFilePath = path.join(process.cwd(), 'data.json');
-    const data = fs.readFileSync(dataFilePath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
+// Helper to format DB row to UserProfile
+async function formatUserRow(row: any): Promise<UserProfile> {
+  // Fetch related data
+  const [skillsRes, certsRes, scheduleRes, historyRes] = await Promise.all([
+    supabase.from('skills').select('name').eq('user_id', row.id),
+    supabase.from('certifications').select('name').eq('user_id', row.id),
+    supabase.from('schedule').select('*').eq('user_id', row.id),
+    supabase.from('views_history').select('*').eq('user_id', row.id).order('date', { ascending: true })
+  ]);
+
+  return {
+    id: row.id,
+    username: row.username,
+    name: row.name,
+    email: row.email,
+    role: row.role,
+    superpower: row.superpower || '',
+    currentProject: row.current_project || '',
+    avatarUrl: row.avatar_url || '',
+    linkedin: row.linkedin || '',
+    calendly: row.calendly || '',
+    isAvailable: row.is_available,
+    theme: row.theme,
+    layout: row.layout,
+    customColor1: row.custom_color_1 || undefined,
+    customColor2: row.custom_color_2 || undefined,
+    officeHours: row.office_hours || undefined,
+    officeDay: row.office_day || undefined,
+    officeStartTime: row.office_start || undefined,
+    officeEndTime: row.office_end || undefined,
+    views: row.views || 0,
+    skills: skillsRes.data?.map(s => s.name) || [],
+    certifications: certsRes.data?.map(c => c.name) || [],
+    schedule: scheduleRes.data?.map(s => ({
+      id: s.id,
+      days: s.days,
+      startTime: s.start_time,
+      endTime: s.end_time
+    })) || [],
+    viewsHistory: historyRes.data?.map(h => ({
+      date: h.date,
+      count: h.count
+    })) || [],
+  };
 }
 
 export default async function HomePage() {
-  const users = getUsers();
+  const { data, error } = await supabase
+    .from('users')
+    .select('*')
+    .order('created_at', { ascending: true });
+
+  let users: UserProfile[] = [];
+  if (!error && data) {
+    users = await Promise.all(data.map(formatUserRow));
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', textAlign: 'center', padding: '40px 20px' }}>
