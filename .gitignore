@@ -41,8 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 # backups and metadata
-v0-backup.tar.gz
+*.tar.gz
+*.zip
 ._*
 **/._*
 .DS_Store
-
